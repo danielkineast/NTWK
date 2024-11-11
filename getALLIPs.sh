@@ -1,9 +1,9 @@
 #!/bin/bash
 
-network="192.168.111.0/24"  
+network="192.168.111"  
 output_file="allIPs.txt"
 
 echo "Scanning network $network ..."
-nmap -sn "$network" | grep "Nmap scan report for" | awk '{print $NF}' | tr -d '()' | grep -Ev '\.(0|[1-9]|10)$' > "$output_file"
+nmap -sn "$network.11-254" | grep "Nmap scan report for" | awk '{print $NF}' | tr -d '()'  > "$output_file"
 
 echo "Scan complete. Results saved in $output_file"
